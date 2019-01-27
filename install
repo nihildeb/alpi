@@ -8,3 +8,5 @@ ALPINE_VERSION="$(cat /etc/alpine-release)"
 
 echo "alpi v.${VERSION}"
 echo "alpine release ${ALPINE_VERSION}"
+
+ln -sf /etc/alpi/profile.d/* /etc/profile.d/
