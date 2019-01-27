@@ -1,0 +1,57 @@
+
+echo "
+user                www;
+worker_processes    auto;
+error_log           /var/log/nginx/error.log warn;
+pid                 /var/run/nginx.pid;
+
+events {
+  worker_connections          1024;
+}
+
+http {
+  include                 /etc/nginx/mime.types;
+  default_type            application/octet-stream;
+  sendfile                on;
+  access_log              /var/log/nginx/access.log;
+  keepalive_timeout       3000;
+  server {
+    listen                  80;
+    root                    /etc/alpi/public;
+    index                   index.html;
+    server_name             localhost;
+    client_max_body_size    32m;
+    error_page              500 502 503 504  /50x.html;
+    location = /50x.html {
+      root              /var/lib/nginx/html;
+    }
+  }
+}
+
+" > /etc/nginx/nginx.conf
+
+packages='openssl vim git nginx'
+for pkg in $packages ; do
+  apk add --no-cache "$pkg"
+done
+
+cd /etc/alpi
+git pull
+ln -sf /etc/alpi/init.d/alpi.sh /etc/init.d/alpi
+#ln -s /etc/alpi/init.d/alpi.sh
+
+# IP is set in the image and needs to be done here > /etc/network/interfaces
+
+# git clone /etc/www for nginx
+
+#lbusave
+#echo 'rebooting...'
+#reboot
+
+
+#if [ $1 eq '-s' ] then
+  #echo 'saving...'
+  ##lbusave
+#fi
+
+
