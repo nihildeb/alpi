@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# this script is expected to be started thusly:
+# sh -c "$(curl -sSL https://raw.githubusercontent.com/nihildeb/alpi/master/install)"
+
+$VERSION = "0.1"
+
+echo "alpi v.${VERSION}"
