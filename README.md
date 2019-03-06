@@ -3,5 +3,5 @@
 Do not run this ever!
 
 ```
-sh -c "$(curl -sSL https://raw.githubusercontent.com/nihildeb/alpi/master/install)"
+sh -c "$(wget -O - https://raw.githubusercontent.com/nihildeb/alpi/master/install)"
 ```

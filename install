@@ -1,8 +1,10 @@
 #!/bin/sh
 
 # this script is expected to be started thusly:
-# sh -c "$(curl -sSL https://raw.githubusercontent.com/nihildeb/alpi/master/install)"
+# sh -c "$(wget -O - https://raw.githubusercontent.com/nihildeb/alpi/master/install)"
 
-$VERSION = "0.1"
+VERSION="0.0.1"
+ALPINE_VERSION="$(cat /etc/alpine-release)"
 
 echo "alpi v.${VERSION}"
+echo "alpine release ${ALPINE_VERSION}"
