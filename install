@@ -15,15 +15,19 @@ for pkg in $packages ; do
 done
 
 if [ ! -d /etc/alpi ]; then
+  echo "no alpi, cloning"
   cd /etc
   git clone https://github.com/nihildeb/alpi.git /etc/alpi
 fi
 
 if [ -d /etc/alpi ]; then
+  echo "alpi found, pulling..."
   cd /etc/alpi
   git pull
 fi
 
 ln -sf /etc/alpi/init.d/alpi.sh /etc/init.d/alpi
 ln -sf /etc/alpi/profile.d/* /etc/profile.d/
+lbu ci -v -d
+reboot
 
