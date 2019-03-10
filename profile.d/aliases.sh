@@ -6,6 +6,15 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# git
+alias ga='git add .'
+alias gs='git status'
+alias gp='git push'
+alias gca='git commit -v -a'
+alias gl='git pull'
+alias gb='git branch'
+alias gco='git checkout'
+
 # xplatform shell helpers
 alias flush='dscacheutil -flushcache'
 alias cls='clear'
