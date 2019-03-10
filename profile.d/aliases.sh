@@ -1,4 +1,6 @@
+#!/bin/sh
 # Aliases from http://test.ipsaw.com:8080/install
+
 # some ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -25,14 +27,14 @@ alias squid-reconfigure='squid -k reconfigure'
 alias squid-check='squid -k check'
 alias squid-stat='netstat -tl'
 
-alias nginx-init='nginxinit'
-alias nginx-start='rc-service nginx start'
-alias nginx-enable='rc-update add nginx'
-
 function nginxinit() {
   adduser -D -g 'www' www
   mkdir /www
   chown -R www:www /var/lib/nginx
   chown -R www:www /www
 }
+alias nginx-init='nginxinit'
+alias nginx-start='rc-service nginx start'
+alias nginx-enable='rc-update add nginx'
+
 

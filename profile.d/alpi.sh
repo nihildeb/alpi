@@ -1,6 +1,4 @@
 #!/bin/sh
 set -e
 
-function alpi_install() {
-
-}
+# function alpi_install() { }
