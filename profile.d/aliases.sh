@@ -13,6 +13,15 @@ alias h='history'
 alias ..='cd ..'
 alias ...='cd ../..'
 
+# git
+alias ga='git add .'
+alias gs='git status'
+alias gp='git push'
+alias gca='git commit -v -a'
+alias gl='git pull'
+alias gb='git branch'
+alias gco='git checkout'
+
 # alpi
 alias lbusave='lbu ci -v -d'
 alias lbusavedry='lbu ci -n -v'
