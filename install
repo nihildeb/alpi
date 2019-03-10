@@ -9,15 +9,21 @@ ALPINE_VERSION="$(cat /etc/alpine-release)"
 echo "alpi v.${VERSION}"
 echo "alpine release ${ALPINE_VERSION}"
 
-packages='openssl vim git nginx'
-for pkg in $packages ; do
-  apk add --no-cache "$pkg"
-done
-
 if [ -d /etc/alpi ]; then
   echo "alpi found, fucking DELETE this shit"
   rm -rf /etc/alpi
 fi
+
+if [ -d /etc/alpi ]; then
+  echo 'fucking hell'
+  exit 1
+fi
+
+
+packages='openssl vim git nginx'
+for pkg in $packages ; do
+  apk add --no-cache "$pkg"
+done
 
 if [ ! -d /etc/alpi ]; then
   echo "no alpi, cloning"
