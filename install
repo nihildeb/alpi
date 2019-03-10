@@ -14,16 +14,15 @@ for pkg in $packages ; do
   apk add --no-cache "$pkg"
 done
 
+if [ -d /etc/alpi ]; then
+  echo "alpi found, fucking DELETE this shit"
+  rm -rf /etc/alpi
+fi
+
 if [ ! -d /etc/alpi ]; then
   echo "no alpi, cloning"
   cd /etc
   git clone https://github.com/nihildeb/alpi.git /etc/alpi
-fi
-
-if [ -d /etc/alpi ]; then
-  echo "alpi found, pulling..."
-  cd /etc/alpi
-  git pull
 fi
 
 ln -sf /etc/alpi/init.d/alpi.sh /etc/init.d/alpi
