@@ -10,29 +10,32 @@ echo "alpi v.${VERSION}"
 echo "alpine release ${ALPINE_VERSION}"
 
 if [ -d /etc/alpi ]; then
-  echo "alpi found, fucking DELETE this shit"
   rm -rf /etc/alpi
 fi
 
 if [ -d /etc/alpi ]; then
-  echo 'fucking hell'
+  echo '/etc/alpi still exists!!!!!!!!!!!!!!!!!'
   exit 1
 fi
-
 
 packages='openssl vim git nginx'
 for pkg in $packages ; do
   apk add --no-cache "$pkg"
 done
 
+adduser -D -g 'alpi' alpi
 if [ ! -d /etc/alpi ]; then
   echo "no alpi, cloning"
   cd /etc
   git clone https://github.com/nihildeb/alpi.git /etc/alpi
 fi
 
+chown -R alpi:alpi /var/lib/nginx
+chown -R alpi:alpi /etc/alpi
+
 ln -sf /etc/alpi/init.d/alpi.sh /etc/init.d/alpi
 ln -sf /etc/alpi/profile.d/* /etc/profile.d/
+ln -sf /etc/alpi/nginx/nginx.conf /etc/nginx/nginx.conf
 lbu ci -v -d
 reboot
 
