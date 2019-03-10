@@ -9,4 +9,21 @@ ALPINE_VERSION="$(cat /etc/alpine-release)"
 echo "alpi v.${VERSION}"
 echo "alpine release ${ALPINE_VERSION}"
 
+packages='openssl vim git nginx'
+for pkg in $packages ; do
+  apk add --no-cache "$pkg"
+done
+
+if [ ! -d /etc/alpi ]; then
+  cd /etc
+  git clone https://github.com/nihildeb/alpi.git /etc/alpi
+fi
+
+if [ -d /etc/alpi ]; then
+  cd /etc/alpi
+  git pull
+fi
+
+ln -sf /etc/alpi/init.d/alpi.sh /etc/init.d/alpi
 ln -sf /etc/alpi/profile.d/* /etc/profile.d/
+
