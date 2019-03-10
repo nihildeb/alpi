@@ -1,8 +1,7 @@
 #!/bin/sh
 # this script is expected to be started thusly:
-# sh -c "$(wget -O - https://raw.githubusercontent.com/nihildeb/alpi/master/install)"
+# wget -O - https://raw.githubusercontent.com/nihildeb/alpi/master/install |sh
 set -e
-
 
 VERSION="0.0.1"
 ALPINE_VERSION="$(cat /etc/alpine-release)"

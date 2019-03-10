@@ -26,9 +26,9 @@ alias gco='git checkout'
 alias lbusave='lbu ci -v -d'
 alias lbusavedry='lbu ci -n -v'
 alias lbustat='lbu status'
-alias update='wget -q -O - http://test.ipsaw.com:8080/install |sh'
-alias updater='update && lbusave && reboot'
+alias update='wget -q -O - https://raw.githubusercontent.com/nihildeb/alpi/master/install |sh'
 alias reboot='killall squid; reboot;'
+alias updater='update && lbusave && reboot'
 
 function nginxinit() {
   adduser -D -g 'www' www
