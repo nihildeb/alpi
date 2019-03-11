@@ -12,7 +12,7 @@ echo "alpine release ${ALPINE_VERSION}"
 apk update
 apk upgrade
 
-packages='openssl git nginx'
+packages='openssl openssh vim git'
 for pkg in $packages ; do
   apk add "$pkg"
 done
@@ -26,6 +26,8 @@ git clone https://github.com/nihildeb/alpi.git /alpi
 cd /alpi/core
 
 tar -cf - . | tar --overwrite -x -v -f - -C /etc/
+
+rc-update add sshd
 
 lbu ci -d -v
 echo "install successful. restart now"
