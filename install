@@ -12,12 +12,15 @@ echo "alpine release ${ALPINE_VERSION}"
 apk update
 apk upgrade
 
-packages='openssl git make'
+packages='openssl git nginx'
 for pkg in $packages ; do
   apk add "$pkg"
 done
 
 git clone https://github.com/nihildeb/alpi.git /alpi
 cd /alpi
-make
+tar -cf - /alpi/core/ | tar xvf - -C /
+lbu ci -d -v
+
+echo "install successful. restart now"
 
