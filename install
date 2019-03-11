@@ -19,7 +19,7 @@ done
 
 git clone https://github.com/nihildeb/alpi.git /alpi
 cd /alpi
-tar -cf - /alpi/core/ | tar xvf - -C /
+tar -cf - /alpi/core/ | tar xvf - -C /etc
 lbu ci -d -v
 
 echo "install successful. restart now"
