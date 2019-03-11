@@ -1,0 +1,7 @@
+HOST=192.168.178.59
+USER=user
+
+git clone $USER@$HOST:alpi /alpi
+
+cd /alpi
+
