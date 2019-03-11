@@ -18,8 +18,8 @@ for pkg in $packages ; do
 done
 
 git clone https://github.com/nihildeb/alpi.git /alpi
-cd /alpi
-tar -cf - /alpi/core/ | tar xvf - -C /etc
+cd /alpi/core
+tar -cf - . | tar xvf - -C /etc/
 lbu ci -d -v
 
 echo "install successful. restart now"
