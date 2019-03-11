@@ -25,7 +25,7 @@ rm -rf /alpi
 git clone https://github.com/nihildeb/alpi.git /alpi
 cd /alpi/core
 
-tar -cf - . | tar xvf - -C /etc/
+tar -cf - . | tar --overwrite -x -v -f - -C /etc/
 
 lbu ci -d -v
 echo "install successful. restart now"

@@ -1,0 +1,20 @@
+#!/bin/sh
+set -e
+
+CONF=/etc/dhcp/dhcpd.conf
+
+MAC=$(ifconfig eth0 | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}')
+echo "installing DHCP for $MAC"
+
+if [ ! -f $CONF ]; then
+  echo "$CONF does not exist"
+  exit 1
+fi
+
+# sed replace 00:00:00:00:00 with MAC
+sed '1s/00:00:00:00:00:00/$MAC' /etc/dhcp/dhcpd.conf
+
+apk update
+apk add dhcp
+rc-update add dhcpd
+rc-service dhcpd start
