@@ -12,7 +12,7 @@ if [ ! -f $CONF ]; then
 fi
 
 # sed replace 00:00:00:00:00 with MAC
-sed -i "s/00:00:00:00:00:00/$MAC" /etc/dhcp/dhcpd.conf
+sed -i "s/00:00:00:00:00:00/$MAC/g" /etc/dhcp/dhcpd.conf
 
 apk update
 apk add dhcp
