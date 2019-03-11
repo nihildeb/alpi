@@ -17,10 +17,16 @@ for pkg in $packages ; do
   apk add "$pkg"
 done
 
+cd /
+rm -rf /etc/alpi
+rm -f /etc/profile.d/*.sh
+
+rm -rf /alpi
 git clone https://github.com/nihildeb/alpi.git /alpi
 cd /alpi/core
-tar -cf - . | tar xvf - -C /etc/
-lbu ci -d -v
 
+tar -cf - . | tar xvf - -C /etc/
+
+lbu ci -d -v
 echo "install successful. restart now"
 
