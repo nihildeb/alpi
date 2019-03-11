@@ -1,2 +1,2 @@
 #!/bin/sh
-wget -O - http://192.168.178.59:8080/install |sh
+wget -O - https://raw.githubusercontent.com/nihildeb/alpi/master/install |sh
